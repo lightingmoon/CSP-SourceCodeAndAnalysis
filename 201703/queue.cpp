@@ -9,15 +9,17 @@ int main()
 	ios_base::sync_with_stdio(0);
 	int n,m,pos,move;
 	cin>>n>>m;
-	// init
+	// initial queue
 	for(size_t i =1;i<=n;i++)
 		p.push_back(i);
-	for(int i =0;i<m;i++){
-		cin>>pos>>move;
+	for(int i =0;i<m;i++){		// start simulation, because this problem only has little data,
+		cin>>pos>>move;			// so we can simulation success in time.
 		list<int>::iterator it = find(p.begin(),p.end(),pos);
 		it = p.erase(it);
-		if(move>0) for(int i=0;i<move;i++) it++;
-		else for(int i=0;i<(-move);i++) it--;
+		if(move>0)
+			for(int i=0;i<move;i++)	it++;
+		else
+			for(int i=0;i<(-move);i++) it--;
 		p.insert(it,pos);
 	}
 	list<int>::iterator it = p.begin();
@@ -27,6 +29,6 @@ int main()
     return 0;
 }
 /*
-*summary:
+*summary:	this is an easy simulation problem.
 */
 

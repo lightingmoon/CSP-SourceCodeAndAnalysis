@@ -17,14 +17,18 @@ int main()
         cin >> a[i];
     sort(a, a + n);
     int l = 0, r = 0, m = (n >> 1);
-    for(int i = 0; i < m; i++) {
-        if(a[i] < a[m]) l++;
-        if(a[n - i - 1] > a[m]) r++;
+    for(int i = 0; i < m; i++) {        // 模拟计算在中位数两边的数是否相等。
+        if(a[i] < a[m])
+            l++;
+        if(a[n - i - 1] > a[m])
+            r++;
     }
-    if(l == r) cout << a[m] << '\n';
-    else cout << "-1" << '\n';
+    if(l == r)
+        cout << a[m] << '\n';
+    else
+        cout << "-1" << '\n';
     return 0;
 }
 /*
-*summary:
+*summary:   考虑到时间复杂度 O(N logN)
 */

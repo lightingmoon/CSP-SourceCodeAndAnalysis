@@ -12,14 +12,14 @@ int main()
     int n,maxWav=-1,t,l;
     cin>>n;
     cin>>t;
-    while(--n){
+    while(--n){     // 边输入边处理数据
         l=t;
         cin>>t;
-        maxWav=max(abs(t-l),maxWav);
+        maxWav=max(abs(t-l),maxWav);    // 输入完即更新完最大波动
     }
     cout<<maxWav<<'\n';
     return 0;
 }
 /*
-*summary:
+*summary:   模拟
 */

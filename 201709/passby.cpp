@@ -1,7 +1,7 @@
 /*
 *positon:http://118.190.20.162/view.page?gpid=T63
 */
-#include<bits/stdc++.h>
+/*#include<bits/stdc++.h>
 using namespace std;
 int main()
 {
@@ -23,7 +23,23 @@ int main()
         }
     }
     return 0;
+}*/
+/*
+*summary:  可以用模拟做，考虑用dp，完全背包，代码如下
+*/
+#include<iostream>
+using namespace std;
+int dp[303];                                // 全局变量自动初始化为0
+int main()
+{
+    int n, p[] = {0, 10, 30, 50}, v[] = {0, 1, 4, 7};  // 预处理代价，价值
+    cin >> n;
+    for(int i = 1; i <= 3; i++)
+        for(int j = p[i]; j <= n; j++)
+            dp[j] = max(dp[j - p[i]] + v[i], dp[j]);    // 消耗同等代价，看哪一种得到的价值最大，打到的酱油越多(#^.^#)
+    cout << dp[n] << endl;
+    return 0;
 }
 /*
-*summary:   很水的题，我还粗心了，罚多做一道
+summary: 满完全背包，后面的决策不会影响前面的决策，故顺序滚动数组
 */

@@ -16,33 +16,33 @@ bool judge(string &t, string &p)
         }                   // 判断内容
         if(p[l1++] != '<')  return false;
         out.push_back(' ');
-        if(p[l1] == 'i') {
+        if(p[l1] == 'i') {          // int型变量，进入处理
             bool flag=false;
             while(t[l2] && t[l2] >= '0' && t[l2] <= '9') {
-                if(t[l2]>'0') flag=true;
+                if(t[l2]>'0') flag=true;        // 高位去0
                 if(flag) out.push_back(t[l2]);
                 l2++;
             }
             if(!flag) return false;
             l1 += 4;
         }
-        if(p[l1] == 's') {
+        if(p[l1] == 's') {          // string类型
             string str = "";
-            while(t[l2] && t[l2] != '/'){
+            while(t[l2] && t[l2] != '/'){   // 解析字符串内容
                 str.push_back(t[l2]);
                 l2++;
             }
-            if(str.length() == 0) return false;
+            if(str.length() == 0) return false; // 是否解析成功
             out.append(str.begin(),str.end());
             l1 += 4;
         }
-        if(p[l1] == 'p') {
+        if(p[l1] == 'p') {          // 路径
             while(l2<t.size())
                 out.push_back(t[l2++]);
             return true;
         }
     }
-    return (l1 == r1) && (l2 == r2);
+    return (l1 == r1) && (l2 == r2);    // 是否走到尾部
 }
 int main()
 {
@@ -59,11 +59,11 @@ int main()
         cin >> t;
         int j;
         for(j = 0; j < n; j++) {
-            if(judge(t, r[j].first)) {
+            if(judge(t, r[j].first)) {      //判定是否匹配规则
                 flag = true;
                 break;
             } else{
-                out.clear();
+                out.clear();                // 解析失败，初始化输出
             }
         }
         if(flag)   cout << r[j].second << out;
@@ -74,7 +74,7 @@ int main()
     return 0;
 }
 /*
-*summary:
+*summary: 字符串模拟，主要是思路和耐心，思考算法和数据结构，根据思路一步一步调试，结果可期。
 *
 */
 
